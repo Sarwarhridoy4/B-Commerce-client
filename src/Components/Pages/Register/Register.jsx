@@ -4,7 +4,7 @@ import logo from "../../../Assets/logo.png"
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
-import { GoogleAuthProvider } from 'firebase/auth';
+// import { GoogleAuthProvider } from 'firebase/auth';
 import { AuthContext } from '../../../Context/UserContext';
 
 const Register = () => {
@@ -12,6 +12,26 @@ const Register = () => {
   const [signUpError, setSignUPError] = useState('');
   const { createUser, updateUser, googleSignIn } = useContext(AuthContext);
   const navigate = useNavigate()
+
+  //saving user to database
+  const saveUser = (name, email) =>{
+    const user ={name, email};
+    // save task to the database
+    fetch("http://localhost:5000/customers", {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        toast.success(`${name} is added successfully`);
+        
+      });
+  }
+
   //user sign up 
   const handelSignUp = (data) => {
     setSignUPError('');
@@ -22,12 +42,13 @@ const Register = () => {
                 toast.success('User Created Successfully.')
                 const userInfo = {
                     displayName: data.username
-                }
+              }
+              console.log(userInfo);
                 updateUser(userInfo)
                   .then(() => {
-                    saveUser(data.username, data.email,data.Role);
+                    saveUser(data.username, data.email);
                     navigate('/')
-                        toast('inside update user');
+                        // toast('inside update user');
                     })
                     .catch(err => console.log(err));
             })
@@ -40,35 +61,22 @@ const Register = () => {
   
   //google signin
   const handelGoogleSignIn = () => {
-    googleSignIn(GoogleAuthProvider)
+    googleSignIn()
       .then((result) => {
         const user = result.user;
-        // saveUser(user?.displayName,user?.email)
-        // console.log(user);
+        saveUser(user?.displayName,user?.email)
+        console.log(user);
         toast(`authenticated as ${user?.displayName}`);
         navigate("/");
       })
+      
       .catch((error) => {
         console.error(error.message);
         toast(error.message);
       });
   };
 
-  //saving user to database
-  const saveUser = (name, email) =>{
-    const user ={name, email};
-    fetch('http://localhost:5000/users', {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify(user)
-    })
-    .then(res => res.json())
-    .then(data =>{
-        
-    })
-  }
+  
     return (
         <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
