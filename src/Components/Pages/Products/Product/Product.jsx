@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Product = ({product}) => {
     console.log(product._id);
-    
+    const{_id}=product
   return (
     <div className='flex flex-col items-center justify-center w-full max-w-sm mx-auto'>
       <div
@@ -20,7 +20,7 @@ const Product = ({product}) => {
           <span className='font-bold text-gray-800 dark:text-gray-200'>
             ${product?.price}
           </span>
-          <Link to={`products/${product?._id}`}>
+          <Link to={`/products/${_id}`}>
           <button className='px-2 py-1 text-xs font-semibold text-white uppercase transition-colors duration-300 transform bg-gray-800 rounded hover:bg-gray-700 dark:hover:bg-gray-600 focus:bg-gray-700 dark:focus:bg-gray-600 focus:outline-none'>
             Detailse
           </button>
