@@ -163,7 +163,7 @@ const Login = () => {
                   aria-hidden='true'
                 />
               </span>
-              Sign in
+              Google
             </button>
             {loginError && toast.error(loginError)}
           </div>

@@ -171,7 +171,7 @@ const Register = () => {
                     aria-hidden='true'
                   />
                 </span>
-                Sign in
+                Register
               </button>
               <button
                 onClick={handelGoogleSignIn}
