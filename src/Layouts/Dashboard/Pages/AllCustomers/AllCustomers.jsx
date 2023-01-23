@@ -5,7 +5,7 @@ const AllCustomers = () => {
   const [customers, setCustomers] = useState([]);
   //showing ordered items in cart
   useEffect(() => {
-    fetch(`http://localhost:5000/customers`)
+    fetch(`https://server-sarwarhridoy4.vercel.app/customers`)
       .then((res) => res.json())
       .then((data) => setCustomers(data));
   }, []);
@@ -23,20 +23,25 @@ const AllCustomers = () => {
           </tr>
         </thead>
         <tbody>
-                  {
-                      customers?.map((cus,i)=><tr key={i} cus={cus}>
-                        <th>{i+1}</th>
-                        <td>{cus?.name}</td>
-                        <td>{cus?.email}</td>
-                        <td><button className="btn btn-sm btn-outline btn-success">Detail</button></td>
-                      </tr>)
-          }
-          
+          {customers?.map((cus, i) => (
+            <tr key={i} cus={cus}>
+              <th>{i + 1}</th>
+              <td>{cus?.name}</td>
+              <td>{cus?.email}</td>
+              <td>
+                <button className='btn btn-sm btn-outline btn-success'>
+                  Detail
+                </button>
+              </td>
+            </tr>
+          ))}
         </tbody>
-          </table>
-          <div className="w-9/12 mx-auto">
-          <Link to='/dashboard/add-customer'><button className="btn btn-warning">Add Customer</button></Link>
-          </div>
+      </table>
+      <div className='w-9/12 mx-auto'>
+        <Link to='/dashboard/add-customer'>
+          <button className='btn btn-warning'>Add Customer</button>
+        </Link>
+      </div>
     </div>
   );
 };

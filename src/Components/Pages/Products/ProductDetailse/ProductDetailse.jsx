@@ -6,17 +6,16 @@ import { AuthContext } from "../../../../Context/UserContext";
 const ProductDetailse = () => {
   const product = useLoaderData()[0];
   // console.log(product);
-  const {user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const username = user?.displayName;
   const email = user?.email;
-  
-  
-  const navigate = useNavigate()
+
+  const navigate = useNavigate();
   //saving user to database
   const saveUserBooking = (username, email, productname, image, price) => {
     const cartInfo = { username, email, productname, image, price };
     // save task to the database
-    fetch("http://localhost:5000/cart", {
+    fetch("https://server-sarwarhridoy4.vercel.app/cart", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -27,7 +26,7 @@ const ProductDetailse = () => {
       .then((result) => {
         console.log(result);
         toast.success(`${productname} is added to cart`);
-        navigate('/orders')
+        navigate("/orders");
       });
   };
   //adding to cart
@@ -39,7 +38,6 @@ const ProductDetailse = () => {
       product?.img,
       product?.price
     );
-
   };
   return (
     <div className='card  md:w-4/5 mx-auto bg-base-100 shadow-xl my-10'>

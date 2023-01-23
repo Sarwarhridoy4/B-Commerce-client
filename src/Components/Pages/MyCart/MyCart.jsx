@@ -11,29 +11,29 @@ const MyCart = () => {
   const [datas, setdatas] = useState([]);
   //showing ordered items in cart
   useEffect(() => {
-    fetch(`http://localhost:5000/orders/${user?.email}`)
+    fetch(`https://server-sarwarhridoy4.vercel.app/orders/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setdatas(data));
   }, [user?.email]);
   if (loading) {
-    return <Loading></Loading>
+    return <Loading></Loading>;
   }
-  setLoading(false)
-  const length = datas.length
+  setLoading(false);
+  const length = datas.length;
   // console.log(length);
   // console.log(datas);
 
   // deleting a cart item with id
   const handelDeleteTask = (_id) => {
     // console.log(task);
-    fetch(`http://localhost:5000/orders/${_id}`, {
+    fetch(`https://server-sarwarhridoy4.vercel.app/orders/${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
       .then((result) => {
-        setLoading(true)
+        setLoading(true);
         toast.success(`item deleted.`);
-        setLoading(false)
+        setLoading(false);
       });
   };
   return (
@@ -51,22 +51,32 @@ const MyCart = () => {
           </tr>
         </thead>
         <tbody>
-          {length !== 0 && datas.map((data, i) => (
-            <tr key={i} data={data}>
-              <th>{i + 1}</th>
-                  <td>{data?.username}</td>
-                  <td>{ data?.productname}</td>
-                  <td>${data?.price}</td>
-              <td><img className="w-20" src={data?.image} alt={data?.productname} /></td>
-                  <td className="">
-                      <button className="btn btn-xs btn-success m-2">Buy</button>
-                      <button onClick={() => handelDeleteTask(data?._id)} className="btn btn-xs btn-error m-2">Delete</button>
-              </td>
-            </tr>
-          ))}
-          {
-            length === 0 && <EmptyAlert></EmptyAlert>
-          }
+          {length !== 0 &&
+            datas.map((data, i) => (
+              <tr key={i} data={data}>
+                <th>{i + 1}</th>
+                <td>{data?.username}</td>
+                <td>{data?.productname}</td>
+                <td>${data?.price}</td>
+                <td>
+                  <img
+                    className='w-20'
+                    src={data?.image}
+                    alt={data?.productname}
+                  />
+                </td>
+                <td className=''>
+                  <button className='btn btn-xs btn-success m-2'>Buy</button>
+                  <button
+                    onClick={() => handelDeleteTask(data?._id)}
+                    className='btn btn-xs btn-error m-2'
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          {length === 0 && <EmptyAlert></EmptyAlert>}
         </tbody>
       </table>
     </div>

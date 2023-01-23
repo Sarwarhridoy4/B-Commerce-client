@@ -35,9 +35,9 @@ const AddCustomer = () => {
             img: imgData.data.url,
             description: data.description,
           };
-console.log(task);
-        //   save task to the database
-          fetch("http://localhost:5000/products", {
+          console.log(task);
+          //   save task to the database
+          fetch("https://server-sarwarhridoy4.vercel.app/products", {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -50,7 +50,7 @@ console.log(task);
               toast.success(`${data.name} is added successfully`);
               navigate(`/dashboard/products`);
             });
-         }
+        }
       });
   };
 
