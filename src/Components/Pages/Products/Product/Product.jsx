@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Product = ({product}) => {
-    console.log(product._id);
+    // console.log(product._id);
     const{_id}=product
   return (
     <div className='flex flex-col items-center justify-center w-full max-w-sm mx-auto'>

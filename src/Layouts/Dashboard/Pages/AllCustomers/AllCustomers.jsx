@@ -9,7 +9,7 @@ const AllCustomers = () => {
       .then((res) => res.json())
       .then((data) => setCustomers(data));
   }, []);
-  console.log(customers);
+  // console.log(customers);
   return (
     <div className='overflow-x-auto'>
       <table className='table w-3/4 mx-auto my-10 table-compact'>

@@ -20,7 +20,7 @@ const AddCustomer = () => {
     const formData = new FormData();
     formData.append("image", image);
     const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`;
-    console.log(url);
+    // console.log(url);
     fetch(url, {
       method: "POST",
       body: formData,
@@ -35,7 +35,7 @@ const AddCustomer = () => {
             img: imgData.data.url,
             description: data.description,
           };
-          console.log(task);
+          // console.log(task);
           //   save task to the database
           fetch("https://server-sarwarhridoy4.vercel.app/products", {
             method: "POST",

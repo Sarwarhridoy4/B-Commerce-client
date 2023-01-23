@@ -12,7 +12,7 @@ const AddCustomer = () => {
   } = useForm();
   const navigate = useNavigate();
   const handelAddCustomer = (data) => {
-    console.log(data);
+    // console.log(data);
     //saving customer to database
     const saveCustomer = (name, email) => {
       const customer = { name, email };
@@ -26,7 +26,7 @@ const AddCustomer = () => {
       })
         .then((res) => res.json())
         .then((result) => {
-          console.log(result);
+          // console.log(result);
           navigate("/dashboard/customers");
           toast.success(`${name} is added to customer list successfully`);
         });

@@ -30,7 +30,7 @@ const Register = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
+        // console.log(result);
         toast.success(`${name} is added successfully`);
       });
   };
@@ -41,12 +41,12 @@ const Register = () => {
     createUser(data.email, data.password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        // console.log(user);
         toast.success("User Created Successfully.");
         const userInfo = {
           displayName: data.username,
         };
-        console.log(userInfo);
+        // console.log(userInfo);
         updateUser(userInfo)
           .then(() => {
             saveUser(data.username, data.email);

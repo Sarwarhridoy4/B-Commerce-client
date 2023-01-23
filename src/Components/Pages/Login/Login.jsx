@@ -29,7 +29,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         toast.success("User login Successfully!");
-        console.log(user);
+        // console.log(user);
         navigate(from, { replace: true });
       })
       .catch((error) => {
@@ -43,7 +43,7 @@ const Login = () => {
     googleSignIn(googleProvider)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        // console.log(user);
         toast(`authenticated as ${user?.displayName}`);
 
         const newuser = {
@@ -60,7 +60,7 @@ const Login = () => {
         })
           .then((res) => res.json())
           .then((result) => {
-            console.log(result);
+            // console.log(result);
             toast.success(`${user.displayName} is added successfully`);
             navigate("/");
           });

@@ -8,7 +8,7 @@ const AllOrders = () => {
       .then((res) => res.json())
       .then((data) => setOders(data));
   }, []);
-  console.log(orders);
+  // console.log(orders);
   return (
     <div className='overflow-x-auto'>
       <table className='table w-3/4 mx-auto my-10 table-compact'>

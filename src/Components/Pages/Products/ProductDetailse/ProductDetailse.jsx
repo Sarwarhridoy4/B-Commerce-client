@@ -24,7 +24,7 @@ const ProductDetailse = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
+        // console.log(result);
         toast.success(`${productname} is added to cart`);
         navigate("/orders");
       });
