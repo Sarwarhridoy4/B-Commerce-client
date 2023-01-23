@@ -3,11 +3,12 @@ import { NavLink } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import logo from "../../../Assets/logo.png"
 import { AuthContext } from '../../../Context/UserContext';
+import useAdmin from '../../Hooks/useAdmin/useAdmin';
 const Navbar = () => {
   
   
   const { user, logOut } = useContext(AuthContext);
-
+const [admin]= useAdmin(user?.email)
   const handelLogout = () => {
     logOut()
       .then(() => {
@@ -31,7 +32,9 @@ const Navbar = () => {
           {user?<button onClick={()=>handelLogout()} className="btn btn-outline btn-info">LogOut</button>:null}
           </li>
           <li>
-            <NavLink to='/dashboard'>Dashboard</NavLink>
+          {
+            admin && user?.uid && <NavLink to='/dashboard'>Dashboard</NavLink>
+            }
           </li>
         </React.Fragment>
       );

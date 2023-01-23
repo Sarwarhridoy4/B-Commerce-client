@@ -75,6 +75,9 @@ const Login = () => {
           <h2 className='mt-6 text-center text-3xl font-bold tracking-tight text-gray-900'>
             Login to Your your account
           </h2>
+          <p>Please login with below credential to acces dashboard</p>
+          <p>Admin Email: abdur@rahman1.net</p>
+          <p>Admin Password: 123456</p>
         </div>
         <form onSubmit={handleSubmit(handelLogIn)} className='mt-8 space-y-6' action='#' method='POST'>
           <div className='-space-y-px rounded-md shadow-sm'>
