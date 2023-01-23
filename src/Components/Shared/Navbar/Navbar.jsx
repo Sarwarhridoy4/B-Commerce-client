@@ -1,7 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import logo from "../../../Assets/logo.png"
+import { AuthContext } from '../../../Context/UserContext';
 const Navbar = () => {
+  
+  
+  const { user, logOut } = useContext(AuthContext);
+
+  const handelLogout = () => {
+    logOut()
+      .then(() => {
+        toast.success("User Logged Out");
+      })
+      .catch((error) => console.log(error));
+  };
+  //menu-items goes here//
     const menuItems = (
         <React.Fragment>
           <li>
@@ -11,7 +25,10 @@ const Navbar = () => {
             <NavLink to='/Products'>Products</NavLink>
           </li>
           <li>
-            <NavLink to='/register'>Register</NavLink>
+            <NavLink to={`/orders`}>My Cart</NavLink>
+          </li>
+          <li>
+          {user?<button onClick={()=>handelLogout()} className="btn btn-outline btn-info">LogOut</button>:null}
           </li>
           <li>
             <NavLink to='/dashboard'>Dashboard</NavLink>
@@ -37,7 +54,7 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <NavLink to='signup' className="btn">Get started</NavLink>
+    <NavLink to='/register' className="btn">Get started</NavLink>
   </div>
 </div>
     );
