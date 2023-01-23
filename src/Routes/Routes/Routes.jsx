@@ -7,8 +7,13 @@ import Products from "../../Components/Pages/Products/Products";
 import Register from "../../Components/Pages/Register/Register";
 import Error from "../../Components/Shared/Error/Error";
 import Dashboard from "../../Layouts/Dashboard/Dashboard";
+import AllCustomers from "../../Layouts/Dashboard/Pages/AllCustomers/AllCustomers";
+import AllOrders from "../../Layouts/Dashboard/Pages/AllOrders/AllOrders";
+import AllProducts from "../../Layouts/Dashboard/Pages/AllProducts/AllProducts";
+import AddCustomer from "../../Layouts/Dashboard/Pages/AddCustomer/AddCustomer";
+import AddProduct from "../../Layouts/Dashboard/Pages/AddProduct/AddProduct";
 import Main from "../../Layouts/Main/Main"
-import Private from "../Private/Private";
+
 const router = createBrowserRouter([
     {
         path: '/',
@@ -23,10 +28,6 @@ const router = createBrowserRouter([
                 path: '/products',
                 element: <Products></Products>
             },
-            // {
-            //     path: '/my-cart',
-            //     element: <MyCart></MyCart>
-            // },
             
             {
                 path: '/products/:id',
@@ -56,8 +57,26 @@ const router = createBrowserRouter([
         element: <Dashboard></Dashboard>, 
         errorElement: <Error></Error>,
         children: [
-            
-            
+            {
+                path: '/dashboard/customers',
+                element:<AllCustomers></AllCustomers>
+            },
+            {
+                path: '/dashboard/orders',
+                element:<AllOrders></AllOrders>
+            },
+            {
+                path: '/dashboard/products',
+                element:<AllProducts></AllProducts>
+            },
+            {
+                path: '/dashboard/add-customer',
+                element:<AddCustomer></AddCustomer>
+            },
+            {
+                path: '/dashboard/add-product',
+                element:<AddProduct></AddProduct>
+            },
         ]
     },
 ])
