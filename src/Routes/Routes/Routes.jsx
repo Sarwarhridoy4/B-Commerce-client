@@ -13,6 +13,7 @@ import AllProducts from "../../Layouts/Dashboard/Pages/AllProducts/AllProducts";
 import AddCustomer from "../../Layouts/Dashboard/Pages/AddCustomer/AddCustomer";
 import AddProduct from "../../Layouts/Dashboard/Pages/AddProduct/AddProduct";
 import Main from "../../Layouts/Main/Main"
+import Private from "../Private/Private"
 
 const router = createBrowserRouter([
     {
@@ -40,7 +41,7 @@ const router = createBrowserRouter([
             {
                 path: '/orders',
                 
-                element: <MyCart></MyCart>
+                element: <Private><MyCart></MyCart></Private>
             },
             {
                 path: '/register',

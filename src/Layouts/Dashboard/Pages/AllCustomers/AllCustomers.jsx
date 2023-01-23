@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const AllCustomers = () => {
   const [customers, setCustomers] = useState([]);
@@ -34,7 +35,7 @@ const AllCustomers = () => {
         </tbody>
           </table>
           <div className="w-9/12 mx-auto">
-          <button className="btn btn-warning">Add Customer</button>
+          <Link to='/dashboard/add-customer'><button className="btn btn-warning">Add Customer</button></Link>
           </div>
     </div>
   );
