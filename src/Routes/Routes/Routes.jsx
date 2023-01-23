@@ -58,6 +58,10 @@ const router = createBrowserRouter([
         errorElement: <Error></Error>,
         children: [
             {
+                path: '/dashboard',
+                element:<AllCustomers></AllCustomers>
+            },
+            {
                 path: '/dashboard/customers',
                 element:<AllCustomers></AllCustomers>
             },

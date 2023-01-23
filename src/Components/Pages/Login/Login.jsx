@@ -41,7 +41,25 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         toast(`authenticated as ${user?.displayName}`)
+        
+        const newuser = {
+          name:user?.displayName,
+          email:user.email
+        };
+    // save task to the database
+    fetch("http://localhost:5000/customers", {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newuser),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        toast.success(`${user.displayName} is added successfully`);
         navigate("/");
+      });
        
       })
       .catch((error) => {
