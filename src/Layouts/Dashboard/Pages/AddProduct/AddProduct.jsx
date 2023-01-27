@@ -33,7 +33,7 @@ const AddCustomer = () => {
             name: data.name,
             price: data.price,
             img: imgData.data.url,
-            description: data.description,
+            body: data.description,
           };
           // console.log(task);
           //   save task to the database

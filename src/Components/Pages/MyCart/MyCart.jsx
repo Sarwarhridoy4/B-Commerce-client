@@ -34,6 +34,8 @@ const MyCart = () => {
         setLoading(true);
         toast.success(`item deleted.`);
         setLoading(false);
+        const newData = datas?.filter(data => data?._id !== _id)
+        setdatas(newData)
       });
   };
   return (
