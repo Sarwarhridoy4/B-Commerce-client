@@ -29,6 +29,7 @@ const ProductDetailse = () => {
         navigate("/orders");
       });
   };
+  
   //adding to cart
   const handelAddToCart = () => {
     saveUserBooking(
@@ -51,9 +52,15 @@ const ProductDetailse = () => {
           <strong>Price: $ {product?.price}</strong>
         </p>
         <div className='card-actions justify-end'>
-          <button onClick={handelAddToCart} className='btn btn-primary'>
+          {
+            user? <button onClick={handelAddToCart} className='btn btn-primary'>
             Add To Cart
-          </button>
+            </button> : <Link to='/login'><button className='btn btn-primary'>
+            Add To Cart
+          </button></Link>
+            
+          }
+          
 
           <Link to='/'>
             <button className='btn btn-primary text-2xl'>🏡</button>

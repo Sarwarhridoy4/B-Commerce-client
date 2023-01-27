@@ -17,7 +17,7 @@ const Products = () => {
         setLoading(false)
         // console.log(products);
       });
-  }, []);
+  }, [setLoading]);
   
   if (loading) {
     return <Loading></Loading>;

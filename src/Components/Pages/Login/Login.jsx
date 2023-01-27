@@ -28,7 +28,7 @@ const Login = () => {
     signIn(data.email, data.password)
       .then((result) => {
         const user = result.user;
-        toast.success("User login Successfully!");
+        toast.success(`${user?.displayName} login Successfully!`);
         // console.log(user);
         navigate(from, { replace: true });
       })
@@ -62,7 +62,7 @@ const Login = () => {
           .then((result) => {
             // console.log(result);
             toast.success(`${user.displayName} is added successfully`);
-            navigate("/");
+            navigate(from, { replace: true } || '/');
           });
       })
       .catch((error) => {
