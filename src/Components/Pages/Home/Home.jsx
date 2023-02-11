@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Video from "../../VideoJS/Video/Video";
 
 const Home = () => {
   return (
-    <div className='container flex flex-col px-6 py-10 mx-auto space-y-6 lg:h-[32rem] lg:py-16 lg:flex-row lg:items-center '>
+    <div>
+      <div className='container flex flex-col px-6 py-10 mx-auto space-y-6 lg:h-[32rem] lg:py-16 lg:flex-row lg:items-center '>
       <div className='w-full lg:w-1/2'>
         <div className='lg:max-w-lg'>
           <h1 className='text-3xl font-semibold tracking-wide text-gray-800 lg:text-4xl'>
@@ -143,6 +145,10 @@ const Home = () => {
           alt='glasses'
         />
       </div>
+      </div>
+      <h3 className="text-4xl font-semibold my-5">How We Collect</h3>
+      <p className="text-xl my-3">Watch how we collect garden fresh vegetable directly from our farmer</p>
+      <Video></Video>
     </div>
   );
 };
